@@ -357,8 +357,14 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 24px 60px;
+      padding: 30px 24px 60px;
       position: relative;
+    }
+
+    @media (min-width: 960px) {
+      .hero-logo-svg {
+        height: 42px !important;
+      }
     }
 
     .pill {
@@ -589,31 +595,18 @@
 
     /* Founder badge bar */
     .founder {
-      margin: 22px auto 0;
+      margin: 16px auto 0;
       max-width: 520px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 12px 16px;
-      border-radius: 14px;
+      padding: 10px 16px;
+      border-radius: 12px;
       background: linear-gradient(180deg, rgba(22, 22, 22, 0.6), rgba(12, 12, 12, 0.6));
       border: 1px solid var(--border);
-      text-align: left;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    .founder-badge {
-      flex-shrink: 0;
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: grid;
-      place-items: center;
-      color: #050505;
-      font-weight: 700;
-      font-size: 11px;
-      box-shadow: 0 4px 14px var(--accent-glow);
-    }
 
     .founder .txt {
       flex: 1;
@@ -628,8 +621,8 @@
     }
 
     .founder .progress {
-      flex-shrink: 0;
-      width: 90px;
+      width: 100%;
+      margin-top: 2px;
     }
 
     .founder .progress-bar {
@@ -649,10 +642,10 @@
 
     .founder .progress-txt {
       margin-top: 6px;
-      font-size: 10.5px;
+      font-size: 10px;
       color: var(--text-faint);
       font-family: 'Geist Mono', monospace;
-      text-align: right;
+      text-align: center;
     }
 
     .founder .progress-txt b {
@@ -661,6 +654,38 @@
     }
 
     @media (max-width: 560px) {
+      .hero {
+        padding-top: 5px !important;
+        padding-bottom: 40px !important;
+      }
+
+      .hero-logo-wrap {
+        margin-bottom: 16px !important;
+      }
+
+      h1.headline {
+        font-size: 44px !important;
+        margin: 22px 0 18px !important;
+      }
+
+      .sub {
+        margin-bottom: 36px !important;
+        font-size: 16px !important;
+      }
+
+      .card {
+        padding: 28px !important;
+      }
+
+      .founder {
+        margin-top: 22px !important;
+        padding: 12px 16px !important;
+      }
+
+      .hero-platforms {
+        margin-top: 32px !important;
+      }
+
       .founder {
         flex-direction: column;
         align-items: flex-start;
@@ -1868,26 +1893,32 @@
         height: 500px;
         perspective: 1200px;
       }
+
       .carousel-phone {
         width: 220px;
         height: 446px;
         border-radius: 34px;
         padding: 8px;
       }
+
       .carousel-phone .screen {
         border-radius: 28px;
       }
+
       .iphone-notch {
         height: 16px;
         border-radius: 0 0 10px 10px;
       }
+
       .carousel-phone.pos-1 {
         transform: translateX(-100px) translateZ(-300px) rotateY(15deg) scale(0.8);
         opacity: 0.3;
       }
+
       .carousel-phone.pos-2 {
         transform: translateX(0) translateZ(100px) scale(1);
       }
+
       .carousel-phone.pos-3 {
         transform: translateX(100px) translateZ(-300px) rotateY(-15deg) scale(0.8);
         opacity: 0.3;
@@ -2224,13 +2255,13 @@
     .comparison-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 32px;
       margin-top: 60px;
       width: 100%;
     }
 
     .comp-card {
-      padding: 64px 32px 48px;
+      padding: 64px 32px;
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border);
@@ -2238,7 +2269,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-height: 580px;
+      min-height: 600px;
       width: 100%;
       box-sizing: border-box;
     }
@@ -2288,10 +2319,11 @@
       line-height: 1;
     }
 
-    .comp-card .price span {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--text-dim);
+    .founder .progress-txt {
+      font-size: 10px;
+      margin-top: 4px;
+      color: var(--text-faint);
+      display: block;
     }
 
     .comp-card .price-note {
@@ -2301,21 +2333,27 @@
       font-weight: 500;
     }
 
+    .comp-card .price span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-dim);
+    }
+
     .comp-list {
       list-style: none;
       padding: 0;
       margin: 0;
       display: grid;
-      gap: 18px;
+      gap: 24px;
     }
 
     .comp-list li {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 15px;
+      gap: 14px;
+      font-size: 16.5px;
       color: var(--text-dim);
-      line-height: 1.4;
+      line-height: 1.6;
     }
 
     .comp-list li svg {
@@ -2360,22 +2398,20 @@
       color: var(--text-dim);
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 1100px) {
       .comparison-grid {
         grid-template-columns: 1fr;
-        max-width: 560px;
-        margin-left: auto;
-        margin-right: auto;
         gap: 40px;
       }
 
       .comp-card {
-        padding: 56px 32px 40px;
+        padding: 48px 28px !important;
         min-height: auto;
       }
 
       .comp-card.founder {
         transform: none;
+        padding: 80px 32px 80px !important;
       }
     }
 
@@ -2555,22 +2591,27 @@
       }
     }
 
-    .cf-turnstile { 
-    position: absolute; 
-    opacity: 0; 
-    pointer-events: none; 
-    visibility: hidden; 
-    height: 0; width: 0; overflow: hidden;
-  }
-    .cf-turnstile { 
-      position: absolute !important; 
-      opacity: 0 !important; 
-      pointer-events: none !important; 
-      visibility: hidden !important; 
-      width: 0 !important; height: 0 !important;
+    .cf-turnstile {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    .cf-turnstile {
+      position: absolute !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
       overflow: hidden !important;
       z-index: -1 !important;
     }
+
     .showcase-block {
       padding: 120px 0;
       background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
@@ -2620,7 +2661,8 @@
 
   <div class="page">
 
-    <nav class="top">
+    <nav class="top" id="mainNav"
+      style="opacity:0; pointer-events:none; transform: translateY(-10px); transition: all 0.4s ease;">
       <div class="nav-inner">
         <a href="#waitlist" class="nav-logo" aria-label="Licitaí">
           <svg class="wordmark-svg" viewBox="0 0 2629.4 651.2" fill="currentColor" aria-hidden="true">
@@ -2659,17 +2701,38 @@
     <!-- ======= HERO ======= -->
     <header class="hero" id="waitlist">
       <div class="container">
-        <span class="pill reveal"><span class="dot"></span> <span>Em breve · Beta privado</span></span>
+        <div class="reveal hero-logo-wrap" style="margin-bottom: 32px; display: flex; justify-content: center;">
+          <svg class="hero-logo-svg" style="height: 32px; width: auto; color: var(--text);" viewBox="0 0 2629.4 651.2"
+            fill="currentColor">
+            <polygon fill-rule="evenodd"
+              points="1091.8 122.8 1016.8 122.8 1016.8 506.3 1260.6 506.3 1260.6 437.8 1091.8 437.8 1091.8 122.8" />
+            <rect x="1278.1" y="122.8" width="75.1" height="383.6" />
+            <path fill-rule="evenodd"
+              d="M1651.5,411c-10.1,10.6-21.6,18.9-34.5,24.9-13,6-27.3,9-43,9-22.7,0-42.7-5.6-60.3-16.7-17.5-11.1-31.2-26.5-41.1-46-9.9-19.5-14.8-42.1-14.8-67.7s4.8-48,14.5-67.4c9.7-19.4,23.2-34.6,40.5-45.8,17.3-11.1,37.2-16.7,59.5-16.7s29.6,2.8,42.7,8.5c13.2,5.7,24.8,13.5,35.1,23.6,10.2,10.1,18.4,21.8,24.7,35.3l69.6-25.8c-9.1-21.5-22.2-40.6-39.2-57.3-17-16.6-36.8-29.6-59.5-38.9-22.7-9.3-47.1-14-73.4-14-37.3,0-70.2,8.5-98.9,25.5-28.7,17-51.2,40.4-67.7,70.1-16.4,29.8-24.7,64-24.7,102.7s8.2,73,24.7,102.7c16.4,29.8,39.1,53.2,67.9,70.1,28.9,17,61.9,25.5,99.2,25.5s51.3-4.8,74-14.2c22.6-9.5,42.5-22.8,59.5-40,17-17.2,30-36.9,39.2-59.2l-69.6-25.2c-6.2,13.9-14.3,26.1-24.4,36.7Z" />
+            <rect x="1768" y="122.8" width="75.1" height="383.6" />
+            <polygon fill-rule="evenodd"
+              points="2157.6 122.8 1852.9 122.8 1852.9 191.3 1968 191.3 1968 506.3 2043 506.3 2043 191.3 2157.6 191.3 2157.6 122.8" />
+            <path fill-rule="evenodd"
+              d="M2326.3,122.8h-75.1l-151.2,383.6h79.5l32.3-84.4h158.9l32.3,84.4h79.5l-151.2-383.6h-4.9ZM2237.2,355.7l54.1-141.3,54.1,141.3h-108.2Z" />
+            <rect x="2495.7" y="122.8" width="75.1" height="383.6" />
+            <polygon fill-rule="evenodd" points="2631 25.2 2549.9 25.2 2488 97 2560.3 97 2631 25.2" />
+            <path fill-rule="evenodd"
+              d="M521,0c-61.4,0-92.1,0-111.2,19.1s-19.1,49.8-19.1,111.2,0,92.1,19.1,111.2c19.1,19.1,49.8,19.1,111.2,19.1s92.1,0,111.2-19.1,19.1-49.8,19.1-111.2,0-92.1-19.1-111.2C613,0,582.4,0,521,0Z" />
+            <path fill-rule="evenodd"
+              d="M523.9,309.3h-5.8c-28.2,0-54,0-75-2.8-23.2-3.1-47.6-10.4-67.7-30.5-20.1-20.1-27.5-44.6-30.6-67.7-2.8-21-2.8-46.9-2.8-75v-5.9c0-28.2,0-54,2.8-75,2.3-17.5,7.1-35.7,17.9-52.3h-37c-153.5,0-230.2,0-277.9,47.6C0,95.4,0,172.2,0,325.6s0,230.2,47.7,277.9c47.7,47.7,124.5,47.7,277.9,47.7s230.2,0,277.9-47.7h0c47.7-47.7,47.7-124.4,47.7-277.9v-37c-16.6,10.8-34.8,15.6-52.3,17.9-21,2.8-46.8,2.8-75,2.8ZM350,447.7c0,13.5-10.9,24.4-24.4,24.4s-24.4-10.9-24.4-24.4v-63.2l-121.1,121.1c-9.4,8.7-23.9,8.7-33.3,0-9.9-9.2-10.4-24.6-1.2-34.5l121.1-121.1h-63.2c-13.5,0-24.4-10.9-24.4-24.4s10.9-24.4,24.4-24.4h122.1c13.5,0,24.4,10.9,24.4,24.4v122.1Z" />
+          </svg>
+        </div>
 
         <h1 class="headline reveal">
           <span class="grad">Sua inteligência</span><br />
           <span class="em">em Licitações.</span>
         </h1>
 
-        <p class="sub reveal">
-          O governo abre <b style="color:var(--text)">300 mil licitações por ano</b> R$ 250 bi em contratos.<br />
-          O <b style="color:var(--text)">Licitaí</b> monitora o PNCP por você, filtra pelo seu segmento e avisa antes do
-          prazo acabar.
+        <p class="sub reveal" style="max-width: 60ch;">
+          <span style="display:block; margin-bottom: 14px; font-size: 15px; opacity: 0.7;">
+            O governo abre <b>300 mil licitações por ano</b>, totalizando <b>R$ 250 bi</b> em contratos.
+          </span>
+          O <b>Licitaí</b> te mostra qual contrato, quando acontece e como fazer.
         </p>
 
 
@@ -2679,8 +2742,12 @@
             <h2>Vaga de Fundador</h2>
             <p class="card-sub">Os <b style="color:var(--accent)">primeiros 50</b> travam de <s style="opacity:0.5">R$
                 970</s> para <b>R$ 597/ano</b> para sempre.</p>
-            <div style="font-size: 11px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: -8px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 6px;">
-              <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div
+              style="font-size: 11px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: -8px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+              <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
               Bônus: 10 dias grátis com tudo liberado
             </div>
 
@@ -2708,7 +2775,8 @@
                 <input id="phoneInput" type="tel" placeholder="(11) 99999-9999" autocomplete="tel" required />
               </div>
               <!-- Captcha Widget (Invisible) -->
-              <div class="cf-turnstile" data-sitekey="0x4AAAAAAC_fSmFve0PR6fLG" data-theme="dark" data-appearance="invisible"></div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAC_fSmFve0PR6fLG" data-theme="dark"
+                data-appearance="invisible"></div>
 
               <button class="btn-submit" type="submit">
                 <span class="btn-label">Entrar na lista</span>
@@ -2737,16 +2805,13 @@
           </div>
         </div>
 
-        <!-- Founder progress -->
         <div class="founder reveal" id="founder">
-          <div class="founder-badge">F50</div>
-          <div class="txt">
-            <b>Plano Founder — 50% vitalício.</b><br />
-            Garantido enquanto renovar (sujeito a ajuste de inflação).
+          <div class="txt" style="font-size: 14px; letter-spacing: 0.02em;">
+            <b style="color:var(--accent)">50% OFF</b> — Plano Founder vitalício
           </div>
           <div class="progress">
-            <div class="progress-bar">
-              <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-bar" style="max-width: 240px; margin: 0 auto;">
+              <div class="progress-fill" id="progressFill" style="width: 0%"></div>
             </div>
             <div class="progress-txt"><b id="takenCount">0</b>/50 vagas</div>
           </div>
@@ -2836,65 +2901,62 @@
     </section>
 
     <!-- ======= PRODUCT SHOWCASE ======= -->
-    <section class="showcase-block" id="interface" style="height: 400vh; position: relative;">
-      <div class="sticky-container"
-        style="position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden;">
-        <div class="container">
-          <div class="section-head reveal" style="text-align: center;">
-            <span class="eyebrow"><span class="dot-sm"></span>Interface Premium</span>
-            <h2>A inteligência que você<br />leva na <em>palma da mão</em>.</h2>
-            <p>Uma experiência completa, intuitiva e focada em resultados.</p>
+    <section class="showcase-block" id="interface">
+      <div class="container">
+        <div class="section-head reveal" style="text-align: center;">
+          <span class="eyebrow"><span class="dot-sm"></span>Interface Premium</span>
+          <h2>A inteligência que você<br />leva na <em>palma da mão</em>.</h2>
+          <p>Uma experiência completa, intuitiva e focada em resultados.</p>
+        </div>
+
+        <ul class="check-list reveal">
+          <li>
+            <div class="cbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></div> Busca avançada com IA
+          </li>
+          <li>
+            <div class="cbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></div> Notificações Push reais
+          </li>
+          <li>
+            <div class="cbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></div> Resumos inteligentes
+          </li>
+        </ul>
+
+        <div class="device-carousel" id="deviceCarousel" style="margin-top: 40px;">
+          <div class="feat-tag t1"><span></span> IA Dashboard</div>
+          <div class="feat-tag t2"><span></span> Busca Semântica</div>
+          <div class="feat-tag t3"><span></span> Notificações Reais</div>
+          <div class="feat-tag t4"><span></span> Pipeline de Status</div>
+
+          <div class="carousel-phone pos-2" data-index="0">
+            <div class="iphone-notch"></div>
+            <div class="screen"><img src="telas/1 - dashboard.svg"></div>
+            <div class="iphone-home-indicator"></div>
           </div>
-
-          <ul class="check-list reveal">
-            <li>
-              <div class="cbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></div> Busca avançada com IA
-            </li>
-            <li>
-              <div class="cbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></div> Notificações Push reais
-            </li>
-            <li>
-              <div class="cbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></div> Resumos inteligentes
-            </li>
-          </ul>
-
-          <div class="device-carousel" id="deviceCarousel" style="margin-top: 40px;">
-            <div class="feat-tag t1"><span></span> IA Dashboard</div>
-            <div class="feat-tag t2"><span></span> Busca Semântica</div>
-            <div class="feat-tag t3"><span></span> Notificações Reais</div>
-            <div class="feat-tag t4"><span></span> Pipeline de Status</div>
-
-            <div class="carousel-phone pos-2" data-index="0">
-              <div class="iphone-notch"></div>
-              <div class="screen"><img src="telas/1 - dashboard.svg"></div>
-              <div class="iphone-home-indicator"></div>
-            </div>
-            <div class="carousel-phone pos-3" data-index="1">
-              <div class="iphone-notch"></div>
-              <div class="screen"><img src="telas/2 - dashboard.svg"></div>
-              <div class="iphone-home-indicator"></div>
-            </div>
-            <div class="carousel-phone pos-4" data-index="2">
-              <div class="iphone-notch"></div>
-              <div class="screen"><img src="telas/3 - pesquisar.svg"></div>
-              <div class="iphone-home-indicator"></div>
-            </div>
-            <div class="carousel-phone pos-1" data-index="3">
-              <div class="iphone-notch"></div>
-              <div class="screen"><img src="telas/4 - pesquisar.svg"></div>
-              <div class="iphone-home-indicator"></div>
-            </div>
-            <div class="carousel-nav" id="carouselNav"></div>
+          <div class="carousel-phone pos-3" data-index="1">
+            <div class="iphone-notch"></div>
+            <div class="screen"><img src="telas/2 - dashboard.svg"></div>
+            <div class="iphone-home-indicator"></div>
           </div>
+          <div class="carousel-phone pos-4" data-index="2">
+            <div class="iphone-notch"></div>
+            <div class="screen"><img src="telas/3 - pesquisar.svg"></div>
+            <div class="iphone-home-indicator"></div>
+          </div>
+          <div class="carousel-phone pos-1" data-index="3">
+            <div class="iphone-notch"></div>
+            <div class="screen"><img src="telas/4 - pesquisar.svg"></div>
+            <div class="iphone-home-indicator"></div>
+          </div>
+          <div class="carousel-nav" id="carouselNav"></div>
         </div>
       </div>
     </section>
@@ -2953,6 +3015,13 @@
               <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <polyline points="20 6 9 17 4 12" />
                 </svg> Busca Semântica <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Favoritos Ilimitados <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24"
                   fill="currentColor">
                   <polygon
                     points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -3414,16 +3483,16 @@
       const btn = form.querySelector('.btn-submit');
       const originalContent = btn.innerHTML;
       btn.disabled = true;
-      
+
       // Feedback visual de verificação
       btn.innerHTML = '<span>Verificando segurança...</span>';
-      
+
       const turnstileRes = document.querySelector('[name="cf-turnstile-response"]').value;
       if (!turnstileRes) {
         // Se ainda não tiver token, aguarda 1s e tenta de novo
         await new Promise(r => setTimeout(r, 1000));
       }
-      
+
       btn.innerHTML = '<span>Reservando vaga...</span>';
 
       try {
@@ -3578,35 +3647,26 @@
       phone.addEventListener('click', () => rotateTo(i));
     });
 
-    // Auto rotate (initial only)
-    let autoTimer = setInterval(() => rotateTo((currentPos + 1) % 4), 4500);
-
-    // Scroll Sync Logic
-    const showcaseSection = document.getElementById('interface');
+    // Nav Visibility on Scroll
+    const mainNav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
-      const rect = showcaseSection.getBoundingClientRect();
-      const sectionHeight = showcaseSection.offsetHeight;
-      const stickyHeight = window.innerHeight;
-
-      // Calculate how much of the "extra" scroll has been used
-      // Progress goes from 0 to 1
-      let progress = -rect.top / (sectionHeight - stickyHeight);
-      progress = Math.max(0, Math.min(1, progress));
-
-      if (progress > 0) clearInterval(autoTimer); // Stop auto when user scrolls
-
-      // Map progress to 4 slides
-      const slideIndex = Math.min(3, Math.floor(progress * 4));
-      if (slideIndex !== currentPos) {
-        rotateTo(slideIndex);
+      if (window.scrollY > 150) {
+        mainNav.style.opacity = '1';
+        mainNav.style.pointerEvents = 'auto';
+        mainNav.style.transform = 'translateY(0)';
+      } else {
+        mainNav.style.opacity = '0';
+        mainNav.style.pointerEvents = 'none';
+        mainNav.style.transform = 'translateY(-10px)';
       }
     });
 
+    // Auto rotate
+    let autoTimer = setInterval(() => rotateTo((currentPos + 1) % 4), 4500);
+
     carousel.addEventListener('mouseenter', () => clearInterval(autoTimer));
     carousel.addEventListener('mouseleave', () => {
-      if (window.scrollY < showcaseSection.offsetTop) {
-        autoTimer = setInterval(() => rotateTo((currentPos + 1) % 4), 4500);
-      }
+      autoTimer = setInterval(() => rotateTo((currentPos + 1) % 4), 4500);
     });
   </script>
 
