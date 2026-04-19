@@ -1708,6 +1708,8 @@
       height: 100%;
       object-fit: contain;
       pointer-events: none;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }
 
     /* iPhone Details */
@@ -1851,13 +1853,44 @@
       }
 
       .carousel-phone.pos-1 {
-        transform: translateX(-140px) scale(0.85);
+        transform: translateX(-140px) translateZ(-200px) scale(0.85);
         opacity: 0.4;
       }
 
       .carousel-phone.pos-3 {
-        transform: translateX(140px) scale(0.85);
+        transform: translateX(140px) translateZ(-200px) scale(0.85);
         opacity: 0.4;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .device-carousel {
+        height: 500px;
+        perspective: 1200px;
+      }
+      .carousel-phone {
+        width: 220px;
+        height: 446px;
+        border-radius: 34px;
+        padding: 8px;
+      }
+      .carousel-phone .screen {
+        border-radius: 28px;
+      }
+      .iphone-notch {
+        height: 16px;
+        border-radius: 0 0 10px 10px;
+      }
+      .carousel-phone.pos-1 {
+        transform: translateX(-100px) translateZ(-300px) rotateY(15deg) scale(0.8);
+        opacity: 0.3;
+      }
+      .carousel-phone.pos-2 {
+        transform: translateX(0) translateZ(100px) scale(1);
+      }
+      .carousel-phone.pos-3 {
+        transform: translateX(100px) translateZ(-300px) rotateY(-15deg) scale(0.8);
+        opacity: 0.3;
       }
     }
 
@@ -2522,7 +2555,22 @@
       }
     }
 
-    /* 3D Showcase Block */
+    .cf-turnstile { 
+    position: absolute; 
+    opacity: 0; 
+    pointer-events: none; 
+    visibility: hidden; 
+    height: 0; width: 0; overflow: hidden;
+  }
+    .cf-turnstile { 
+      position: absolute !important; 
+      opacity: 0 !important; 
+      pointer-events: none !important; 
+      visibility: hidden !important; 
+      width: 0 !important; height: 0 !important;
+      overflow: hidden !important;
+      z-index: -1 !important;
+    }
     .showcase-block {
       padding: 120px 0;
       background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
@@ -3363,16 +3411,20 @@
       if (!name) { shake(document.getElementById('nameInput').closest('.field')); return; }
       if (phone.length < 10) { shake(phoneInput.closest('.field')); return; }
 
-      // Verificar Captcha
+      const btn = form.querySelector('.btn-submit');
+      const originalContent = btn.innerHTML;
+      btn.disabled = true;
+      
+      // Feedback visual de verificação
+      btn.innerHTML = '<span>Verificando segurança...</span>';
+      
       const turnstileRes = document.querySelector('[name="cf-turnstile-response"]').value;
       if (!turnstileRes) {
-        alert('Por favor, complete a verificação de segurança (Captcha).');
-        return;
+        // Se ainda não tiver token, aguarda 1s e tenta de novo
+        await new Promise(r => setTimeout(r, 1000));
       }
-
-      const btn = form.querySelector('.btn-submit');
-      btn.disabled = true;
-      btn.querySelector('.btn-label').textContent = 'Reservando...';
+      
+      btn.innerHTML = '<span>Reservando vaga...</span>';
 
       try {
         // 1. Salvar no Supabase
@@ -3404,7 +3456,7 @@
         console.error('Erro Supabase:', err);
         alert('Erro ao salvar. Verifique sua URL do Supabase ou tente novamente.');
         btn.disabled = false;
-        btn.querySelector('.btn-label').textContent = 'Entrar na lista';
+        btn.innerHTML = originalContent;
       }
     });
 
